@@ -5,9 +5,14 @@ import * as yup from "yup";
 
 const App = ({ values, errors, touched }) => (
   <Form>
-    {touched.email && errors.email && <p>{errors.email}</p>}
-    <Field type="email" name="email" placeholder="Email" />
-    <Field type="password" name="password" placeholder="Password" />
+    <div>
+      {touched.email && errors.email && <p>{errors.email}</p>}
+      <Field type="email" name="email" placeholder="Email" />
+    </div>
+    <div>
+      {touched.password && errors.password && <p>{errors.password}</p>}
+      <Field type="password" name="password" placeholder="Password" />
+    </div>
     <label>
       <Field type="checkbox" name="newsletter" checked={values.newsletter} />
       Join our newsletter
