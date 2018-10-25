@@ -2,8 +2,22 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { withFormik } from "formik";
 
-const App = () => <div>Formik email login</div>;
+const App = ({ values, handleChange }) => (
+  <div>
+    <input
+      type="email"
+      name="email"
+      placeholder="Email"
+      value={values.email}
+      onChange={handleChange}
+    />
+  </div>
+);
 
-const FormikApp = withFormik({})(App);
+const FormikApp = withFormik({
+  mapPropsToValues: ({ email }) => ({
+    email: email || ""
+  })
+})(App);
 
 ReactDOM.render(<FormikApp />, document.getElementById("root"));
