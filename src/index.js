@@ -3,9 +3,9 @@ import ReactDOM from "react-dom";
 import { withFormik, Form, Field } from "formik";
 import * as yup from "yup";
 
-const App = ({ values, errors }) => (
+const App = ({ values, errors, touched }) => (
   <Form>
-    {errors.email && <p>{errors.email}</p>}
+    {touched.email && errors.email && <p>{errors.email}</p>}
     <Field type="email" name="email" placeholder="Email" />
     <Field type="password" name="password" placeholder="Password" />
     <label>
