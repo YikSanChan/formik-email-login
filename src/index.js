@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { withFormik, Form, Field } from "formik";
 import * as yup from "yup";
 
-const App = ({ values, errors, touched }) => (
+const App = ({ values, errors, touched, isSubmitting }) => (
   <Form>
     <div>
       {touched.email && errors.email && <p>{errors.email}</p>}
@@ -21,7 +21,9 @@ const App = ({ values, errors, touched }) => (
       <option value="free">Free</option>
       <option value="premium">Premium</option>
     </Field>
-    <button type="submit">Submit</button>
+    <button type="submit" disabled={isSubmitting}>
+      Submit
+    </button>
   </Form>
 );
 
@@ -42,8 +44,16 @@ const FormikApp = withFormik({
       .min(9, "Password must be 9 characters or longer")
       .required("Password is required")
   }),
-  handleSubmit: values => {
-    console.log(values);
+  handleSubmit: (values, { resetForm, setErrors, setSubmitting }) => {
+    // set timeout to mock API call
+    setTimeout(() => {
+      if (values.email === "evan.chanyiksan@gmail.com") {
+        setErrors({ email: "That email is already taken" });
+      } else {
+        resetForm();
+      }
+      setSubmitting(false);
+    }, 2000);
   }
 })(App);
 
