@@ -1,9 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { withFormik, Form, Field } from "formik";
+import * as yup from "yup";
 
-const App = ({ values }) => (
+const App = ({ values, errors }) => (
   <Form>
+    {errors.email && <p>{errors.email}</p>}
     <Field type="email" name="email" placeholder="Email" />
     <Field type="password" name="password" placeholder="Password" />
     <label>
@@ -24,6 +26,16 @@ const FormikApp = withFormik({
     password: password || "",
     newsletter: newsletter || false,
     plan: plan || "free"
+  }),
+  validationSchema: yup.object().shape({
+    email: yup
+      .string()
+      .email()
+      .required(),
+    password: yup
+      .string()
+      .min(9)
+      .required()
   }),
   handleSubmit: values => {
     console.log(values);
