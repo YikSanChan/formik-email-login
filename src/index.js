@@ -1,25 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { withFormik } from "formik";
+import { withFormik, Form, Field } from "formik";
 
 const App = ({ values, handleChange, handleSubmit }) => (
-  <form onSubmit={handleSubmit}>
-    <input
-      type="email"
-      name="email"
-      placeholder="Email"
-      value={values.email}
-      onChange={handleChange}
-    />
-    <input
-      type="password"
-      name="password"
-      placeholder="Password"
-      value={values.password}
-      onChange={handleChange}
-    />
+  <Form>
+    <Field type="email" name="email" placeholder="Email" />
+    <Field type="password" name="password" placeholder="Password" />
     <button type="submit">Submit</button>
-  </form>
+  </Form>
 );
 
 const FormikApp = withFormik({
