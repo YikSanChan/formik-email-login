@@ -35,12 +35,12 @@ const FormikApp = withFormik({
   validationSchema: yup.object().shape({
     email: yup
       .string()
-      .email()
-      .required(),
+      .email("Email is not valid")
+      .required("Email is required"),
     password: yup
       .string()
-      .min(9)
-      .required()
+      .min(9, "Password must be 9 characters or longer")
+      .required("Password is required")
   }),
   handleSubmit: values => {
     console.log(values);
