@@ -1,6 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import { withFormik } from "formik";
 
 const App = () => <div>Formik email login</div>;
 
-ReactDOM.render(<App />, document.getElementById("root"));
+const FormikApp = withFormik({})(App);
+
+ReactDOM.render(<FormikApp />, document.getElementById("root"));

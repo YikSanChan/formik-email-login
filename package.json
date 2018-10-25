@@ -5,9 +5,11 @@
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
+    "formik": "latest",
     "react": "16.5.2",
     "react-dom": "16.5.2",
-    "react-scripts": "2.0.3"
+    "react-scripts": "2.0.3",
+    "yup": "latest"
   },
   "devDependencies": {},
   "scripts": {
